@@ -1,0 +1,25 @@
+class Solution {
+  public:
+    int countTriplet(vector<int>& arr) {
+        int n=arr.size();
+        int count=0;
+        sort(arr.begin(),arr.end());
+        for(int i=n-1;i>=2;i--){
+            int left=0;
+            int right=i;
+            while(left<right){
+                int sum=arr[left]+arr[right];
+                if(sum==arr[i]){
+                    count++;
+                    left++;
+                    right--;
+                }else if(sum<arr[i]){
+                    left++;
+                }else{
+                    right--;
+                }
+            }
+        }
+        return count;   
+    }
+};
